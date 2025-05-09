@@ -3,6 +3,24 @@
 @section('titulo', 'Nueva Campaña')
 
 @section('contenido')
-    <h2>Formulario para realizar una campaña</h2>
-    <p>Completa los datos para realizar una campaña.</p>
+    <h1>En esta pagina podras crear una nueva campaña</h1>
+    <form action=""> 
+        <label>
+            Nombre:
+            <br>
+            <input type="text" name="name">
+        </label>
+        <br>
+        <label>
+            Descripción:
+            <br>
+            <textarea name="description" rows="5"> </textarea>
+        </label>
+        <br>
+        <label>
+            Categoría:
+            <br>
+            <input type="text" name="category">
+        </label>
+    </form>
 @endsection

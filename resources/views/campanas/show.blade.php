@@ -1,8 +1,12 @@
 @extends('layouts.plantilla')
 
-@section('titulo', 'Detalles de la Campaña')
+@section('titulo', 'Campana'.$campana->name)
 
 @section('contenido')
-    <h2>Detalles de la campaña: {{ $campanas }}</h2>
-    <p>Gracias por ser parte de esta iniciativa de Celima por una mejor educación.</p>
+    <h1>Bienvenido a la campaña: {{ $campana->name }}</h1>
+
+    <a href="{{route('campanas.index')}}">Volver a la lista de campañas</a>
+
+    <p>Categoría: {{ $campana->category }}</p>
+    <p>{{ $campana->description }}</p>
 @endsection

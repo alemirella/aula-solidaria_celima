@@ -9,18 +9,21 @@ class CampanaController extends Controller
 {
     public function index()
     {
-        $campanas = Campana::all();
+        $campanas = Campana::paginate();
 
         return view('campanas.index', compact('campanas'));
     }
 
-    public function crear()
+    public function create()
     {
         return "Formulario para crear una campaña de donación";
     }
 
-    public function detalle($id)
+    public function show($id)
     {
-        return "Detalle de la campaña con ID: $id";
+        $campana = Campana::find($id);
+
+        return view('campanas.show', compact('campana'));
     }
+    
 }
