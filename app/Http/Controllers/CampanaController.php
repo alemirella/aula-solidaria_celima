@@ -16,7 +16,25 @@ class CampanaController extends Controller
 
     public function create()
     {
-        return "Formulario para crear una campaña de donación";
+        return view ('campanas.create');
+    }
+
+    public function store(Request $request){
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'category' => 'required'
+        ]);
+
+        $campana = new Campana();
+
+        $campana->name = $request->name;
+        $campana->description = $request->description;
+        $campana->category = $request->category;
+
+        $campana->save();
+
+        return redirect()->route('campanas.show', $campana);
     }
 
     public function show($id)
@@ -25,5 +43,20 @@ class CampanaController extends Controller
 
         return view('campanas.show', compact('campana'));
     }
-    
+
+    public function edit(Campana $campana)
+    {
+        return view('campanas.edit', compact('campana'));
+    }
+
+    public function update(Request $request, Campana $campana)
+    { 
+        $campana->name = $request->name;
+        $campana->description = $request->description;
+        $campana->category = $request->category;
+
+        $campana->save();
+
+        return redirect()->route('campanas.show', $campana);
+    }
 }
